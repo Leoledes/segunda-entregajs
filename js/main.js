@@ -113,41 +113,64 @@
 
 const vinos = [
     {
+        id: 1,
         nombre: "El enemigo",
         variedad: "Malbec",
         precio: 18625
     },
     {
+        id: 2,
         nombre: "DV Catena",
         variedad: "Malbec",
         precio: 17375
     },
     {
+        id: 3,
         nombre: "Angelica Zapata",
         variedad: "Cabernet Sauvignon",
         precio: 21125
     },
     {
+        id: 4,
         nombre: "Saint Felicien",
         variedad: "Malbec",
         precio: 8250
     },
     {
+        id: 5,
         nombre: "Barda",
         variedad: "Pinot Noir",
         precio: 43750
     },
 ]
 
-let vinitos = document.getElementById("vinos")
+let cartVinos = []
 
-vinos.forEach((vino) => {
-    let contenedor = document.createElement("div")
-    contenedor.className = "card"
-    contenedor.innerHTML = `<h3> ${vino.nombre}</h3>
-                           <h4>Variedad: ${vino.variedad}</h4>
-                           <h4>Precio: $${vino.precio}</h4>`
-    vinitos.appendChild(contenedor)
+let vinosContainer = document.getElementById("vinos-container")
+
+function renderVinos(vinosArray){
+    vinosArray.forEach(vino => {
+        const card = document.createElement("div")
+        card.innerHTML = `<h3>${vino.nombre}</h3>
+                          <h4>Variedad:${vino.variedad}</h4>
+                          <h4>Precio:$${vino.precio}</h4>
+                          <button class="vinoAgregar" id="${vino.id}">Agregar</button>`
+        vinosContainer.appendChild(card)
+    }
+    )
+    addToCartButton()
 }
-)
+renderVinos(vinos)
 
+function addToCartButton () {
+    addButton = document.querySelectorAll(".vinoAgregar")
+    addButton.forEach(button =>{
+        button.onclick = (e) => {
+            const vinoId = e.currentTarget.id
+            const selectVino = vinos.find(vino => vino.id == vinoId)
+            cartVinos.push(selectedProduct)
+            console.log(cartVinos)
+        }
+    }
+    )
+}
