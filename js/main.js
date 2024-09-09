@@ -167,9 +167,11 @@ function addToCartButton () {
     addButton.forEach(button =>{
         button.onclick = (e) => {
             const vinoId = e.currentTarget.id
-            const selectVino = vinos.find(vino => vino.id == vinoId)
-            cartVinos.push(selectedProduct)
+            const selectedVino = vinos.find(vino => vino.id == vinoId)
+            cartVinos.push(selectedVino)
             console.log(cartVinos)
+
+            localStorage.setItem("cartVinos",JSON.stringify(cartVinos))
         }
     }
     )
