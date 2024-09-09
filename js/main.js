@@ -139,14 +139,15 @@ const vinos = [
     },
 ]
 
+let vinitos = document.getElementById("vinos")
 
 vinos.forEach((vino) => {
     let contenedor = document.createElement("div")
     contenedor.className = "card"
-    contenedor.innerHTML = `<h3>Vino: ${vino.nombre}</h3>
+    contenedor.innerHTML = `<h3> ${vino.nombre}</h3>
                            <h4>Variedad: ${vino.variedad}</h4>
                            <h4>Precio: $${vino.precio}</h4>`
-    products.appendChild(contenedor)
+    vinitos.appendChild(contenedor)
 }
 )
 
